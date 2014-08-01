@@ -11,7 +11,7 @@ var checkPaths = [
 ];
 
 checkPaths.map(function(pathItem) {
-    var currentPath = path.join(__dirname + pathItem);
+    var currentPath = path.join(__dirname + '../../../' + '/bem-stub/' + pathItem);
     console.log(currentPath);
 });
 

@@ -1,8 +1,7 @@
 var exercise = require('workshopper-exercise')();
 
 var path = require('path'),
-    exec = require('child_process').exec,
-    stubPath = path.resolve('../../' + '/bfs-stub/'),
+    stubPath = path.resolve(__dirname + '../../..' + '/bfs-stub/'),
     bemhtmlPath = path.resolve(stubPath + '/desktop.bundles/index/' + '/index.bemhtml.js'),
     bemhtml = require(bemhtmlPath).BEMHTML;
 
