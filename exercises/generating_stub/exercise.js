@@ -1,16 +1,18 @@
-var exercise      = require('workshopper-exercise')(),
-    filecheck     = require('workshopper-exercise/filecheck'),
-    execute       = require('workshopper-exercise/execute'),
-    comparestdout = require('workshopper-exercise/comparestdout');
+var exercise = require('workshopper-exercise')(),
+    path = require('path'),
+    fs = require('fs');
 
+exercise.requireSubmission = false;
 
-// checks that the submission file actually exists
-exercise = filecheck(exercise);
+var checkPaths = [
+    'libs/bem-components',
+    'libs/bem-core',
+    'node_modules/bem'
+];
 
-// execute the solution and submission in parallel with spawn()
-exercise = execute(exercise);
-
-// compare stdout of solution and submission
-exercise = comparestdout(exercise);
+checkPaths.map(function(pathItem) {
+    var currentPath = path.join(__dirname + pathItem);
+    console.log(currentPath);
+});
 
 module.exports = exercise;
