@@ -1,0 +1,7 @@
+{yellow}{bold}bem-full-stack is brought to you by this people:{/bold}{/yellow}
+
+{bold}Name                GitHub Username{/bold}
+-----------------------------------
+Dima Belitsky               @dab
+Zheka  Konstantinov         @sipayrt
+Slava Aristov               @einstain
