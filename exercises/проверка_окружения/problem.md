@@ -10,3 +10,5 @@
 $ npm install -g yo generator-bem-stub
 ```
 
+После этого запустите `node bfs-workshop.js verify`
+для проверки правильности установки инструментов

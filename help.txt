@@ -1,5 +1,5 @@
-w}{bold}Found a bug with {appname} or just want to contribute?{/bold}{/yellow}
+Found a bug with this app or just want to contribute?
 
-  The official repository for {appname} is:
-      https://github.com/rvagg/{appname}/
+    The official repository for BEM-WORKSHOP is:
+      https://github.com/bem/bem-workshop/
         Feel free to file a bug report or (preferably) a pull request.
