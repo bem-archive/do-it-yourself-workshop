@@ -14,7 +14,7 @@ exercise.requireSubmission = false;
 exercise.addVerifyProcessor(function (callback) {
     _this = this;
     function failBadPath() {
-        exercise.emit('fail', 'You should install generator-bem-stub with needed params.')
+        exercise.emit('fail', 'Вы должны установить generator-bem-stub с необходимыми параметрами.')
     }
     checkPaths.map(function(pathItem) {
         var currentPath = path.join(__dirname + '../../..' + '/bfs-stub/' + pathItem);
@@ -22,7 +22,7 @@ exercise.addVerifyProcessor(function (callback) {
         fs.stat(currentPath, function(err, stat) {
             if (err) return failBadPath();
             if (!stat.isDirectory()) return failBadPath();
-            exercise.emit('pass', 'Libraries on the places');
+            exercise.emit('pass', 'Все библиотеки на месте.');
             callback(null, true);
         });
     });

@@ -12,15 +12,14 @@ exercise.addVerifyProcessor(function (callback) {
     if (fs.existsSync(bundlePath)) {
         indexHtml = fs.readFileSync(bundlePath, 'utf8');
         if ((indexHtml.indexOf(stringHeaderHtml) > 0) && (indexHtml.indexOf(stringContentHtml) > 0)) {
-            exercise.emit('pass', 'Blocks added');
+            exercise.emit('pass', 'Блоки добавлены');
             callback(null, true);
         } else {
-            exercise.emit('fail', 'You should add all needed blocks to BEMJSON file');
+            exercise.emit('fail', 'Вы должны добавить все необходимые блоки в BEMJSON');
         }
     } else {
-        exercise.emit('fail', 'Index.html not exist. You should run bem make, to compile project files');
+        exercise.emit('fail', 'Файл index.html не существует. Вы должны запустить `bem make` для того, чтобы собрать проект.');
     }
 });
-
 
 module.exports = exercise;

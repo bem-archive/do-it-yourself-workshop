@@ -1,5 +1,4 @@
-Напишем шаблоны блоков `header` и `content`. Внимательно посмотрев на `index.bemjson.js`, вынесем повторяющиеся куски и
-фрагменты, относящиеся к конкретным блокам, в отдельные шаблоны.
+Напишем шаблоны блоков `header` и `content`. Внимательно посмотрев на `index.bemjson.js`, вынесем повторяющиеся куски и фрагменты, относящиеся к конкретным блокам, в отдельные шаблоны.
 
 Начнем с блока `header`. В `index.bemjson.js`:
 
@@ -14,8 +13,7 @@ mix: { block: 'grid' }
 block('header').mix()({ block: 'grid' });
 ```
 
-Сделаем то же самое с блоком `content`.
-`./desktop.blocks/content/content.bemhtml`:
+Сделаем то же самое с блоком `content`. `./desktop.blocks/content/content.bemhtml`:
 
 ```js
 block('content').mix()({ block: 'grid' });
@@ -37,5 +35,4 @@ block('content').mix()({ block: 'grid' });
 
 После этого запустим `bem make` для сборки файлов нашего проекта.
 
-По окончанию проесса сборки запустим `node bfs-workshop.js verify` для тестирования результатов этого шага.
-
+По окончанию процесса сборки запустим `node bfs-workshop.js verify` для тестирования результатов этого шага.
