@@ -1,16 +1,16 @@
 bfs-workshop
 ============
 
-Step-by-step workshop. Building full-stack BEM application.
+Пошаговый мастер-класс. Строим клиентское приложение по методологии и с инструментами БЭМ.
 
-installation
+Установка
 ============
 
-You should clone this repository and run `npm i` inside it to install all needed dependencies.
+Клонируйте этот репозиторий и запустите `npm i` внутри него, для установки необходимых зависимостей.
 
-working on questions
+Работа над заданиями
 ============
 
-There are step-by-step tasks with detailed description. You should select task, fix it and then run `node bfs-workshop.js verify`
+В приложении есть список пошаговых заданий с детальным описанием. Для запуска теста выполните `node bfs-workshop.js`. Вам нужно выбрать задачу, решить ее и затем запустить `node bfs-workshop.js verify`.
 
-Good luck
+Успеха!
