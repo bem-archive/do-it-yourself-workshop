@@ -9,13 +9,13 @@
     "Стили блока island",
     "Стили блоков page и content",
     "BEMHTML блока form",
-    "BEMHTML блоков content и form, deps.js",
+    "BEMHTML блоков content и header, deps.js",
     "Добавить блоки из bem-components",
     "Ymodules декларация модуля form",
     "i-bem.js проверка инициализации блока",
     "DOM-события",
     "BEM-события",
-    "JQUERY AJAX. SSSR BLOCK",
+    "Jquery AJAX. блок sssr",
     "BEMDOM.UPDATE",
-    "ADD SPINNER BLOCK"
+    "Добавить блок spinner"
 ]
