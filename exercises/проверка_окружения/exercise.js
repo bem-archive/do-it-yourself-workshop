@@ -3,30 +3,25 @@ var exercise = require('workshopper-exercise')();
 var path = require('path'),
     exec = require('child_process').exec,
     tools = ['node', 'git', 'yo'],
-    toolVersions = [],
-    _this;
+    toolVersions = [];
 
 exercise.requireSubmission = false;
 
 exercise.addVerifyProcessor(function (callback) {
-    _this = this;
-    function failBrokenTool() {
-        exercise.emit('fail', 'Вам нужно установить необходимые инструменты: git, node и Yeoman');
-        callback(null, false);
-    }
 
     tools.map(function(tool) {
         var currentCommand = tool + ' --version';
         exec(currentCommand, function(err, stdOut, stdErr) {
             if (err) {
-                _this.emit('fail', 'Необходимые инструменты не найдены.');
-                return failBrokenTool();
+                exercise.emit('fail', 'Необходимые инструменты не найдены');
+                return;
             }
 
             toolVersions.push(stdOut);
-            _this.emit('pass', 'Все инструменты установлены.');
-
-            callback(null, true);
+            if (toolVersions.length === tools.length) {
+                exercise.emit('pass', 'All needed tools installed');
+                callback(null, true);
+            }
         });
     });
 });

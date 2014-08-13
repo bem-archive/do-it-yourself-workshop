@@ -12,6 +12,7 @@
     "phantom": "^0.6.5",
     "colors-tmpl": "~0.1.0",
     "workshopper": "git+https://github.com/dab/workshopper-ru",
+    "workshopper-exercise": "^0.2.2",
     "ym": "^0.1.0"
   },
   "bin": "./bfs-workshop.js",
