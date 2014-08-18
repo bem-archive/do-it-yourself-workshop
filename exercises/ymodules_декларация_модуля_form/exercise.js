@@ -9,17 +9,23 @@ var path = require('path'),
 exercise.requireSubmission = false;
 
 exercise.addVerifyProcessor(function (callback) {
-    var form = require(formBlockJs);
-    modules.require('form', function(form) {
-        moduleResult = form.get();
-        if (moduleResult.length > 0) {
-            exercise.emit('pass', 'Module `form` required successfully!');
-            callback(null, true);
-        } else {
-            exercise.emit('fail', 'You should define and require module `form` in your FORM block `js` tech realisation');
-            callback(null, false);
-        }
-    });
+    //if (fs.status(formBlockJs) === '')
+    if (fs.lstatSync(formBlockJs).isFile()) {
+        var form = require(formBlockJs);
+        modules.require('form', function(form) {
+            moduleResult = form.get();
+            if (moduleResult.length > 0) {
+                exercise.emit('pass', 'Module `form` required successfully!');
+                callback(null, true);
+            } else {
+                exercise.emit('fail', 'You should define and require module `form` in your FORM block `js` tech realisation');
+                callback(null, false);
+            }
+        });
+    } else {
+        exercise.emit('fail', 'There are no such file: ./desktop.blocks/form/form.js');
+        callback(null, false);
+    }
 
 });
 
