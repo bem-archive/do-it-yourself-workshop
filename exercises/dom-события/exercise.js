@@ -15,9 +15,10 @@ exercise.addVerifyProcessor(function (callback) {
                 callback(null, false);
             };
 
-            page.set.onConsoleMessage = function(msg) { 
+            page.onConsoleMessage(function(msg) { 
                 console.log(msg);
-            };
+            });
+
 
             page.set('onCallback', function(data) {
                 if (data.msg) { 
@@ -35,7 +36,7 @@ exercise.addVerifyProcessor(function (callback) {
                 page.evaluate(function() {
                     //window.callPhantom({ msg: 'DOM-event emited'});
                     window.modules.require(['jquery'], function($) {
-                        $('.form__search').bem('form').on('submit', function(e) { console.log('msg send'); });
+                        console.log('query send');
                     });
                 }, console.log('evaliating finished'));
             });

@@ -13,8 +13,8 @@ yo bem-stub
 $ yo bem-stub
 
 [?] How to name the project? bfs-stub
-[?] Who will mantain this project? Dima Belitsky
-[?] What email to use? dmtry@yandex-team.ru
+[?] Who will mantain this project? ваше имя
+[?] What email to use? ваша почта
 [?] What collector to use? bem-tools
 [?] What base library to use? bem-core
 [?] Would you like any additional libraries? bem-components
