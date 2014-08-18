@@ -13,12 +13,14 @@ exercise.requireSubmission = false;
 
 exercise.addVerifyProcessor(function (callback) {
     _this = this;
+
     function failBadPath() {
-        exercise.emit('fail', 'Вы должны установить generator-bem-stub с необходимыми параметрами.')
+        //exercise.emit('fail', 'Вы должны установить generator-bem-stub с необходимыми параметрами.')
+        callback(null, false);
     }
+
     checkPaths.map(function(pathItem) {
         var currentPath = path.join(__dirname + '../../..' + '/bfs-stub/' + pathItem);
-        console.log(currentPath);
         fs.stat(currentPath, function(err, stat) {
             if (err) return failBadPath();
             if (!stat.isDirectory()) return failBadPath();

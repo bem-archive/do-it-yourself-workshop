@@ -4,7 +4,7 @@ var path = require('path'),
     fs = require('fs'),
     bundlePath = path.resolve(__dirname + '../../..' + '/bfs-stub/desktop.bundles/index/index.html'),
     stringFormHtml = 'form class=\"form',
-    stringElemHtml = 'div class=\"from__search';
+    stringElemHtml = 'div class=\"formm__search';
 
 exercise.requireSubmission = false;
 

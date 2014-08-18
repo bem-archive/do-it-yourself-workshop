@@ -11,6 +11,7 @@ yo bem-stub
 
 ```
 $ yo bem-stub
+
 [?] How to name the project? bfs-stub
 [?] Who will mantain this project? Dima Belitsky
 [?] What email to use? dmtry@yandex-team.ru
@@ -18,9 +19,10 @@ $ yo bem-stub
 [?] What base library to use? bem-core
 [?] Would you like any additional libraries? bem-components
 [?] What platforms to use? desktop
-[?] Use design from bem-components? Yes
-[?] What technologies to use? bemjson.js, bemtree, bemhtml, browser.js+bemhtml, node.js
-[?] Build static html? Yes
+[?] Use design + autoprefixer from library `bem-components`? Yes
+[?] What technologies to use? bemjson.js, browser.js+bemhtml, node.js
+[?] What template system to use? bemhtml
+[?] Build static HTML? Yes
 ```
 
 Вы видите результаты ответов на вопросы. Первые три вопроса очевидны, после начинается интересное:
