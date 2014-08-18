@@ -10,9 +10,9 @@ exercise.addVerifyProcessor(function (callback) {
     phantom.create(function (ph) {
     ph.createPage(function (page) {
 
-        page.set('onConsoleMessage', function (arguments) {
-            console.log(arguments);
-        });
+        //page.set('onConsoleMessage', function (arguments) {
+            //console.log(arguments);
+        //});
 
         //page.onConsoleMessage = function(msg) {
             //console.log(msg);

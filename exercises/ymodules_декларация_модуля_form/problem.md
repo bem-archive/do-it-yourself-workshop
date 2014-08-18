@@ -13,13 +13,14 @@ modules = require('ym');
 modules.define('form', function(provide) {
     provide({
         get: function() {
-            console.log('Hello from FORM module');
+            return 'Hello from FORM module';
         }
     })
 });
 
 modules.require('form', function(form) {
-    form.get();
+    var msg = form.get();
+    console.log(msg);
 });
 ```
 
