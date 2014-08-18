@@ -24,13 +24,9 @@ modules.define('sssr', ['i-bem__dom', 'jquery'], function(provide, BEMDOM, $) {
                 cache: false,
                 url: 'http://localhost:3000/search',
                 data: this.findBlockInside('form').getVal(),
-                success: this._onSuccess,
+                success: console.log('ajax loaded'),
                 context: this
             });
-        },
-
-        _onSuccess: function(result) {
-            BEMDOM.update(this.findBlockInside('content').domElem, result);
         }
     }))
 })
