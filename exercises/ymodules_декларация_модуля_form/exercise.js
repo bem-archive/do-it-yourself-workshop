@@ -9,8 +9,7 @@ var path = require('path'),
 exercise.requireSubmission = false;
 
 exercise.addVerifyProcessor(function (callback) {
-    //if (fs.status(formBlockJs) === '')
-    if (fs.lstatSync(formBlockJs).isFile()) {
+    if (fs.existsSync(formBlockJs)) {
         var form = require(formBlockJs);
         modules.require('form', function(form) {
             moduleResult = form.get();
