@@ -1,5 +1,5 @@
 var exercise = require('workshopper-exercise')();
-var phantom = require('phantomjs-node');
+var phantom = require('phantom');
 
 var path = require('path'),
     url = 'http://localhost:8080/desktop.bundles/index/';
