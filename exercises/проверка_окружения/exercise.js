@@ -2,7 +2,7 @@ var exercise = require('workshopper-exercise')();
 
 var path = require('path'),
     exec = require('child_process').exec,
-    tools = ['node', 'git', 'yo'],
+    tools = ['yo'],
     toolVersions = [];
 
 exercise.requireSubmission = false;
