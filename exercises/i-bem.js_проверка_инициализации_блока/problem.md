@@ -76,14 +76,10 @@ modules.define('form', ['i-bem__dom'], function(provide, BEMDOM) {
 ```js
 modules.require(['jquery'], function($) {
     var form = $('.form').bem('form');
-    console.log(form.getVal());
+    console.log(form);
 })
 ```
 
-В консоли отобразится что-то похожее на:
+В консоли отобразится структура объекта ```form```.
 
-```
-query=&twitter=on
-```
-
-Это значение полей формы, полученное с помощью `jquery.serialize`. В методе `_onSubmit()` мы указываем `e.preventefault()`, чтобы отменить обычный обработчик отправки формы, и после этого триггерим БЭМ-событие.
+ В методе `_onSubmit()` мы указываем `e.preventefault()`, чтобы отменить обычный обработчик отправки формы, и после этого триггерим БЭМ-событие.
