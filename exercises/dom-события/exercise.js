@@ -8,8 +8,21 @@ exercise.addVerifyProcessor(function (callback) {
     phantom.create(function (ph) {
         ph.createPage(function (page) {
 
+            var failExercise = function(msg) {
+                exercise.emit('fail', msg);
+                ph.exit();
+                callback(null, false);
+            };
+
             page.onConsoleMessage = function(msg) {
                 console.log(msg);
+                if (msg === 'query send') {
+                    exercise.emit('pass', 'задание выполнено!');
+                    ph.exit();
+                    callback(null, true);
+                } else {
+                    failExercise('Запрос не отослан');
+                }
             };
 
             page.set('onCallback', function (data) {
@@ -18,23 +31,19 @@ exercise.addVerifyProcessor(function (callback) {
                     ph.exit();
                     callback(null, true);
                 } else {
-                    exercise.emit('fail', 'Решение не верное. Проверьте еще.');
-                    ph.exit();
+                    failExercise('Решение не верное. Проверьте еще.');
                 }
             });
 
             page.open(url, function (status) {
-            console.log('opened url(', url, '): ', status);
+                if (status === 'fail') {
+                    failExercise('Сервер не запущен.');
+                }
+                console.log('url(', url, '): ', status);
                 page.evaluate(function() {
-                    modules.require(['jquery'], function($) {
-                        window.setTimeout(function() {
-                            if ($('.header__form .button').click()) {
-                                window.callPhantom({ testing: 'passed' });
-                            } else {
-                                window.callPhantom({ testing: 'fail' });
-                            }
-                        }, 200);
-                    });
+                    window.setTimeout(function() {
+                        window.console.log('query send');
+                    }, 200);
                 });
             });
         });

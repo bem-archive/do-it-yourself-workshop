@@ -30,7 +30,6 @@ exercise.addVerifyProcessor(function (callback) {
         page.open(url, function (status) {
         console.log('opened url(', url, '): ', status);
             page.evaluate(function() {
-                console.log('evaluating...');
                 modules.require(['jquery'], function($) {
                     window.setTimeout(function() {
                         if ($('.header__form').hasClass('form_js_inited')) {
