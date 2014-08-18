@@ -4,13 +4,13 @@
 Теперь, в корневой папке `bfs-workshop`  необходимо запустить команду:
 
 ```
-yo bem-stub
+yo bfs-stub
 ```
 
 Пройдемся по вопросам:
 
 ```
-$ yo bem-stub
+$ yo bfs-stub
 [?] How to name the project? sssr-tutorial
 [?] Who will mantain this project? Dima Belitsky
 [?] What email to use? dmtry@yandex-team.ru
