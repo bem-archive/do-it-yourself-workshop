@@ -5,7 +5,7 @@
     "Добавить элементы",
     "Дописать BEMJSON блока header",
     "Дописать BEMJSON блоков island и content",
-    "Стили блоков header, island, page и content",
+    "Стили блоков header island content page",
     "BEMHTML блока form",
     "BEMHTML блоков content и header, deps.js",
     "Добавить блоки из bem-components",

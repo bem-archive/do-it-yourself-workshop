@@ -17,12 +17,18 @@ exercise.addVerifyProcessor(function (callback) {
 
             page.onConsoleMessage(function(msg) { 
                 console.log(msg);
+                if (msg === 'query send') {
+                    exercise.emit('pass', 'событие стриггерирось.');
+                    callback(null, true);
+                } else {
+                    failExercise('Событие не отловлено.');
+                }
             });
 
 
             page.set('onCallback', function(data) {
                 if (data.msg) { 
-                    exercise.emit('pass', 'Событие стриггерирось.');
+                    exercise.emit('pass', 'событие стриггерирось.');
                     callback(null, true);
                 }
             });
@@ -34,7 +40,6 @@ exercise.addVerifyProcessor(function (callback) {
                 }
 
                 page.evaluate(function() {
-                    //window.callPhantom({ msg: 'DOM-event emited'});
                     window.modules.require(['jquery'], function($) {
                         console.log('query send');
                     });
