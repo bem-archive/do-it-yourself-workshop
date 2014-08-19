@@ -20,16 +20,15 @@ exercise.addVerifyProcessor(function (callback) {
                 if (msg === 'query send') {
                     exercise.emit('pass', 'событие стриггерирось.');
                     callback(null, true);
-                } else {
-                    failExercise('Событие не отловлено.');
+                } else if (msg === 'finished') {
+                    failExercise('Событие не поймано');
                 }
             });
 
 
             page.set('onCallback', function(data) {
-                if (data.msg) { 
-                    exercise.emit('pass', 'событие стриггерирось.');
-                    callback(null, true);
+                if (data.msg === 'finished') { 
+                    failExercise('Page loaded. Timer done.');
                 }
             });
 
@@ -40,10 +39,14 @@ exercise.addVerifyProcessor(function (callback) {
                 }
 
                 page.evaluate(function() {
-                    window.modules.require(['jquery'], function($) {
-                        console.log('query send');
+                    window.modules.require(['jquery'], function($){
+                        window.setTimeout(function() {
+                            $('.form__search .button').click();
+                            window.callPhantom({ msg: 'finished' });
+                        }, 300);
                     });
-                }, console.log('evaliating finished'));
+
+                });
             });
         });
     });

@@ -4,37 +4,49 @@ var exercise = require('workshopper-exercise')(),
 
 exercise.requireSubmission = false;
 
+
 exercise.addVerifyProcessor(function (callback) {
     phantom.create(function (ph) {
         ph.createPage(function (page) {
 
-            page.onConsoleMessage = function(msg) {
-                console.log(msg);
+            var failExercise = function(msg) {
+                exercise.emit('fail', msg);
+                ph.exit();
+                callback(null, false);
             };
 
-            page.set('onCallback', function (data) {
-                if (data.testing === 'passed')  {
-                    exercise.emit('pass', 'задание выполнено!');
-                    ph.exit();
+            page.onConsoleMessage(function(msg) { 
+                console.log(msg);
+                if (msg === 'form submitted with BEM-event') {
+                    exercise.emit('pass', 'событие стриггерирось.');
                     callback(null, true);
-                } else {
-                    exercise.emit('fail', 'Решение не верное. Проверьте еще.');
                     ph.exit();
+                } else if (msg === 'finished') {
+                    failExercise('Событие не поймано');
+                }
+            });
+
+
+            page.set('onCallback', function(data) {
+                if (data.msg === 'finished') { 
+                    failExercise('Page loaded. Timer done.');
                 }
             });
 
             page.open(url, function (status) {
-            console.log('opened url(', url, '): ', status);
+
+                if (status === 'fail') {
+                    failExercise('Сервер не запущен.');
+                }
+
                 page.evaluate(function() {
-                    modules.require(['jquery'], function($) {
+                    window.modules.require(['jquery'], function($){
+                        $('.form__search .button').click();
                         window.setTimeout(function() {
-                            if ($('.header__form .button').click()) {
-                                window.callPhantom({ testing: 'passed' });
-                            } else {
-                                window.callPhantom({ testing: 'fail' });
-                            }
-                        }, 200);
+                            window.callPhantom({ msg: 'finished' });
+                        }, 300);
                     });
+
                 });
             });
         });
