@@ -1,6 +1,6 @@
 #### Блок `sssr`
 
-Теперь создадим блок, который будет загружать запрашиваемые данные и отображать их на странице.
+Теперь создадим блок, который будет загружать запрашиваемые данные и обрабатывать их.
 
 `./desktop.blocks/sssr/sssr.js`:
 
@@ -11,29 +11,33 @@ modules.define('sssr', ['i-bem__dom', 'jquery'], function(provide, BEMDOM, $) {
         onSetMod: {
             js: {
                 inited: function() {
-                    this.findBlockInside('form').on('submit', function() {
+                    this._form = this.findBlockInside('form');
+                    this._form.on('submit', function() {
                         this._sendRequest();
                     }, this);
                 }
             }
         },
         _sendRequest: function() {
-            $.ajax({
+            var formVal = this._form.getVal();
+            this._xhr = $.ajax({
                 type: 'GET',
                 dataType: 'html',
                 cache: false,
                 url: 'http://localhost:3000/search',
-                data: this.findBlockInside('form').getVal(),
-                success: console.log('ajax loaded'),
+                data: formVal,
+                success: this._onSuccess,
                 context: this
             });
+        },
+        _onSuccess: function() {
+            console.log('ajax loaded');
         }
     }))
 })
 ```
 
-Пройдемся по коду блока. В начале мы объявили модуль `sssr` с зависимостями от `i-bem__dom`,
-поскольку блок имеет DOM-представление, и `jquery` для работы с AJAX.
+Пройдемся по коду блока. В начале мы объявили модуль `sssr` с зависимостями от `i-bem__dom`, поскольку блок имеет DOM-представление, и `jquery` для работы с AJAX.
 
 В конструкторе блока мы подписываемся на событие `submit` блока `form`. При возникновении этого события выполняется приватный метод `_sendRequest`, отправляющий AJAX-запрос. Когда ответ от сервера будет получен, выполнится обработчик `_onSuccess`, который обновит содержимое блока `content` полученными результатами.
 
