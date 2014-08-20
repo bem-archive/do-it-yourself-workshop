@@ -4,6 +4,7 @@ var exercise = require('workshopper-exercise')(),
 
 exercise.requireSubmission = false;
 
+console.log('Проверяем правильность задания. Пожалуйста подождите.');
 
 exercise.addVerifyProcessor(function (callback) {
     phantom.create(function (ph) {
@@ -16,19 +17,13 @@ exercise.addVerifyProcessor(function (callback) {
             };
 
             page.onConsoleMessage(function(msg) { 
-                console.log(msg);
+                //console.log(msg);
                 if (msg === 'query send') {
                     exercise.emit('pass', 'событие стриггерирось.');
                     callback(null, true);
+                    ph.exit();
                 } else if (msg === 'finished') {
                     failExercise('Событие не поймано');
-                }
-            });
-
-
-            page.set('onCallback', function(data) {
-                if (data.msg === 'finished') { 
-                    failExercise('Page loaded. Timer done.');
                 }
             });
 
@@ -42,11 +37,10 @@ exercise.addVerifyProcessor(function (callback) {
                     window.modules.require(['jquery'], function($){
                         window.setTimeout(function() {
                             $('.form__search .button').click();
-                            window.callPhantom({ msg: 'finished' });
-                        }, 300);
+                        }, 3000);
                     });
 
-                });
+                }, console.log('finished'));
             });
         });
     });

@@ -20,18 +20,19 @@ modules.define('sssr', ['i-bem__dom', 'jquery'], function(provide, BEMDOM, $) {
             }
         },
         _sendRequest: function() {
-            $.ajax({
+            var formVal = this.findBlockInside('form').getVal();
+            this._xhr = $.ajax({
                 type: 'GET',
                 dataType: 'html',
                 cache: false,
-                url: this.params.url,
-                data: this.findBlockInside('form').getVal(),
+                url: 'http://localhost:3000/search',
+                data: formVal,
                 success: this._onSuccess,
                 context: this
             });
         },
-
-        _onSuccess: function(result) {
+        _onSuccess: function() {
+            console.log('ajax loaded');
             BEMDOM.update(this.findBlockInside('content').domElem, result);
         }
     }))
