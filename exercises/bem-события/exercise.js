@@ -4,6 +4,7 @@ var exercise = require('workshopper-exercise')(),
 
 exercise.requireSubmission = false;
 
+console.log('Проверяем правильность задания. Пожалуйста подождите.');
 
 exercise.addVerifyProcessor(function (callback) {
     phantom.create(function (ph) {
@@ -11,25 +12,18 @@ exercise.addVerifyProcessor(function (callback) {
 
             var failExercise = function(msg) {
                 exercise.emit('fail', msg);
-                ph.exit();
                 callback(null, false);
+                ph.exit();
             };
 
             page.onConsoleMessage(function(msg) { 
                 console.log(msg);
-                if (msg === 'form submitted with BEM-event') {
+                if (msg === 'BEM-event') {
                     exercise.emit('pass', 'событие стриггерирось.');
                     callback(null, true);
                     ph.exit();
                 } else if (msg === 'finished') {
                     failExercise('Событие не поймано');
-                }
-            });
-
-
-            page.set('onCallback', function(data) {
-                if (data.msg === 'finished') { 
-                    failExercise('Page loaded. Timer done.');
                 }
             });
 
@@ -41,10 +35,12 @@ exercise.addVerifyProcessor(function (callback) {
 
                 page.evaluate(function() {
                     window.modules.require(['jquery'], function($){
-                        $('.form__search .button').click();
                         window.setTimeout(function() {
-                            window.callPhantom({ msg: 'finished' });
-                        }, 300);
+                            $('.form__search .button').click();
+                            $('.form').bem('form').on('submit', function() { 
+                                console.log('BEM-event'); 
+                            });
+                        }, 1500);
                     });
 
                 });

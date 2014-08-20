@@ -85,14 +85,22 @@ modules.define('form', ['i-bem__dom'], function(provide, BEMDOM) {
         onSetMod: {
             js: {
                 inited: function() {
-                    this.bindTo('submit', this._onSubmit)
+                    this.bindTo('submit', function(e) {
+                        this._onSubmit(e); 
+                    });
+                    this.on('submit', function() {
+                        console.log('BEM-event');
+                    });
                 }
             }
         },
 
-        _onSubmit: function() {
+        _onSubmit: function(e) {
             e.preventDefault();
             this.emit('submit');
+        },
+        getVal: function() {
+            return this.domElem.serialize();
         }
     }))
 })
@@ -101,3 +109,5 @@ modules.define('form', ['i-bem__dom'], function(provide, BEMDOM) {
 Мы объявили модуль `form`, в зависимости которого добавили модуль `i-bem__dom`, поскольку блок будет иметь DOM-представление. Этот модуль предоставляет объект `BEMDOM` С помощью этого объекта мы декларируем блок `form`. Конструктором нашего блока является функция, объявляемая в верхней части кода. Кроме того, у нашего блока есть приватный обработчик `_onSubmit`, отвечающий за реакцию на отправку формы, и публичный метод `getVal`, который возвращает результат сериализации формы.
 
 В методе `_onSubmit()` мы указываем `e.preventDefault()`, чтобы избежать перезагрузки страницы и после этого генерируем БЭМ-событие `submit`, которое в дальнейшем будет использоваться в коде других блоков. Получается, что мы только что создали публичное АПИ блока `form`. Оно состоит из публичного метода и БЭМ-события.
+
+Допишите блок `form` и запустите тест `node bfs-workshop verify`.
