@@ -14,13 +14,13 @@ exercise.addVerifyProcessor(function (callback) {
     if (fs.existsSync(htmlPath)) {
         var bundleHtml = fs.readFileSync(htmlPath, 'utf8');
         if ((bundleHtml.indexOf(stringHeaderHtml) > 0) && (bundleHtml.indexOf(stringContentHtml) > 0)) {
-            exercise.emit('pass', 'BEMHTML for CONTENT and HEADER added');
+            exercise.emit('pass', 'BEMHTML блоков content и header на месте');
             callback(null, true);
         } else {
-            exercise.emit('fail', 'You should add BEMHTML template for blocks CONTENT and HEADER');
+            exercise.emit('fail', 'Нужно добавить BEMHTML шаблоны блоков content и header');
         }
     } else {
-        exercise.emit('fail', 'Bundle files not exist. You should run `bem make`, to compile project files');
+        exercise.emit('fail', 'index.bemhtml.js не существует. Необходимо запустить bem make для сборки проекта.');
     }
 });
 

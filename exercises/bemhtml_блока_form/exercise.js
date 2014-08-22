@@ -14,13 +14,13 @@ exercise.addVerifyProcessor(function (callback) {
         var bemhtml = require(bemhtmlPath).BEMHTML;
         var htmlResult = bemhtml.apply({ block: 'form' });
         if (htmlResult.indexOf(correctHtml) > 0) {
-            exercise.emit('pass', 'BEMHTML for FORM added');
+            exercise.emit('pass', 'BEMHTML блока form на месте');
             callback(null, true);
         } else {
-            exercise.emit('fail', 'You should add BEMHTML template for block FORM');
+            exercise.emit('fail', 'Нужно добавить BEMHTML шаблон блока form');
         }
     } else {
-        exercise.emit('fail', 'Compiled BEMHTML file not exist. You should run `bem make`, to compile project files');
+        exercise.emit('fail', 'index.bemhtml.js не существует. Необходимо запустить bem make для сборки проекта.');
     }
 });
 

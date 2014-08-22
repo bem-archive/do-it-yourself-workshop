@@ -22,15 +22,15 @@ exercise.addVerifyProcessor(function (callback) {
         var indexCss = fs.readFileSync(bundlePath, 'utf8');
         cssStrings.forEach(function(cssString) {
             if (indexCss.indexOf(cssString) < 0) {
-                var msg = 'You should add all needed CSS styling for block: ' + cssString.slice(1);
+                var msg = 'Вам нужно добавить CSS: ' + cssString.slice(1);
                 exercise.emit('fail', msg);
                 callback(null, false);
             } 
         });
-        exercise.emit('pass', 'All blocks CSS found.');
+        exercise.emit('pass', 'CSS стили блоков на месте');
         callback(null, true);
     } else {
-        exercise.emit('fail', 'Compiled CSS file not exist. You should run bem make, to compile project files');
+        exercise.emit('fail', 'index.css не существует. Необходимо запустить bem make для сборки проекта.');
         callback(null, false);
     }
 });

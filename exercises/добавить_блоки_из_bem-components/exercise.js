@@ -13,13 +13,13 @@ exercise.addVerifyProcessor(function (callback) {
     if (fs.existsSync(cssPath)) {
         var bundleCss = fs.readFileSync(cssPath, 'utf8');
         if (bundleCss.indexOf(stringInputCss) > 0) {
-            exercise.emit('pass', 'Blocks from bem-components found');
+            exercise.emit('pass', 'Блоки из bem-components найдены');
             callback(null, true);
         } else {
-            exercise.emit('fail', 'You should add blocks from `bem-components` to your BEMJSON');
+            exercise.emit('fail', 'Нужно добавить блоки из`bem-components` в BEMJSON');
         }
     } else {
-        exercise.emit('fail', 'Bundle files not exist. You should run `bem make -m clean && bem make`, to compile project files');
+        exercise.emit('fail', 'Необходимо запустить bem make для сборки проекта.');
     }
 });
 

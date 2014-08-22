@@ -16,15 +16,15 @@ exercise.addVerifyProcessor(function (callback) {
         modules.require('form', function(form) {
             moduleResult = form.get();
             if (moduleResult.length > 0) {
-                exercise.emit('pass', 'Module `form` required successfully!');
+                exercise.emit('pass', 'Модуль `form` загружен.');
                 callback(null, true);
             } else {
-                exercise.emit('fail', 'You should define and require module `form` in your FORM block `js` tech realisation');
+                exercise.emit('fail', 'Необходимо задекларировать модуль `form` в `js` реализации блока `form`');
                 callback(null, false);
             }
         });
     } else {
-        exercise.emit('fail', 'There are no such file: ./desktop.blocks/form/form.js');
+        exercise.emit('fail', 'Не найден файл: ./desktop.blocks/form/form.js');
         callback(null, false);
     }
 
