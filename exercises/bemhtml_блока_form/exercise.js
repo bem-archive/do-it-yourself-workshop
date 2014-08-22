@@ -7,6 +7,8 @@ var path = require('path'),
 
 exercise.requireSubmission = false;
 
+console.log('Проверяем правильность задания. Пожалуйста подождите.');
+
 exercise.addVerifyProcessor(function (callback) {
     if (fs.existsSync(bemhtmlPath)) {
         var bemhtml = require(bemhtmlPath).BEMHTML;

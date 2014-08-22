@@ -4,6 +4,7 @@ var exercise = require('workshopper-exercise')(),
 
 exercise.requireSubmission = false;
 
+console.log('Проверяем правильность задания. Пожалуйста подождите.');
 
 exercise.addVerifyProcessor(function (callback) {
     phantom.create(function (ph) {
@@ -31,7 +32,7 @@ exercise.addVerifyProcessor(function (callback) {
 
             page.set('onCallback', function(data) {
                 if (data.msg === 'finished') { 
-                    failExercise('Page loaded. Timer done.');
+                    failExercise('Page loaded. Timer done. Nothing happens.');
                 }
             });
 
@@ -44,7 +45,8 @@ exercise.addVerifyProcessor(function (callback) {
                 page.evaluate(function() {
                     window.modules.require(['jquery'], function($){
                         $('.form__search .input__control').val('bemup');
-                        $('.form__search .button').click();
+                        //$('.form__search .button').click();
+                        $('.form').bem('form').emit('submit');
                         window.setTimeout(function() {
                             window.callPhantom({ msg: 'finished' });
                         }, 2000);

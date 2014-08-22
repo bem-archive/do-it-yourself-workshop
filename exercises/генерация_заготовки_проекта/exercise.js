@@ -1,7 +1,6 @@
 var exercise = require('workshopper-exercise')(),
     path = require('path'),
-    fs = require('fs'),
-    _this;
+    fs = require('fs');
 
 var checkPaths = [
     'libs/bem-components/',
@@ -11,21 +10,31 @@ var checkPaths = [
 
 exercise.requireSubmission = false;
 
-exercise.addVerifyProcessor(function (callback) {
-    _this = this;
+console.log('Проверяем правильность задания. Пожалуйста подождите.');
+
+exercise.addVerifyProcessor(function(callback) {
 
     function failBadPath() {
-        //exercise.emit('fail', 'Вы должны установить generator-bem-stub с необходимыми параметрами.')
+        exercise.emit('fail', 'Вы должны установить generator-bem-stub с необходимыми параметрами.')
         callback(null, false);
     }
 
+    function exePass(msg) {
+        exercise.emit('pass', msg);
+        callback(null, true);
+    }
+
+    var currentItem = 0;
     checkPaths.map(function(pathItem) {
+        currentItem += 1;
         var currentPath = path.join(__dirname + '../../..' + '/bfs-stub/' + pathItem);
         fs.stat(currentPath, function(err, stat) {
-            if (err) return failBadPath();
-            if (!stat.isDirectory()) return failBadPath();
-            exercise.emit('pass', 'Все библиотеки на месте.');
-            callback(null, true);
+            if (err || !stat.isDirectory()) {
+                return(failBadPath());
+            } else if (currentItem === checkPaths.length) {
+                currentItem = 0;
+                return(exePass('Все библиотеки на месте!'));
+            }
         });
     });
 });
