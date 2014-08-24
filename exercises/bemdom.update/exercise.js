@@ -1,6 +1,9 @@
 var exercise = require('workshopper-exercise')(),
     phantom = require('phantom'),
-    url = 'http://localhost:3000';
+    config = require('../../utils/config');
+    url = config.server_url;
+    console.log(config);
+    console.log(url);
 
 exercise.requireSubmission = false;
 
@@ -48,7 +51,7 @@ exercise.addVerifyProcessor(function (callback) {
                     window.modules.require(['jquery'], function($){
                         var contentHtml = $('.content').html();
                         $('.form__search .input__control').val('bemup');
-                        $('.form__search .button').click();
+                        $('.form__search .button[type="submit]').click();
                         window.setTimeout(function() {
                             var updatedHtml = $('.content').html();
                             if (updatedHtml !== contentHtml) {
