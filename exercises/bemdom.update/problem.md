@@ -31,7 +31,7 @@ modules.define('sssr', ['i-bem__dom', 'jquery'], function(provide, BEMDOM, $) {
                 context: this
             });
         },
-        _onSuccess: function() {
+        _onSuccess: function(result) {
             console.log('ajax loaded');
             BEMDOM.update(this.findBlockInside('content').domElem, result);
         }

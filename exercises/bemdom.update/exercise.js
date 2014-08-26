@@ -2,8 +2,6 @@ var exercise = require('workshopper-exercise')(),
     phantom = require('phantom'),
     config = require('../../utils/config');
     url = config.server_url;
-    console.log(config);
-    console.log(url);
 
 exercise.requireSubmission = false;
 
@@ -20,24 +18,13 @@ exercise.addVerifyProcessor(function (callback) {
             };
 
             page.onConsoleMessage(function(msg) { 
-                console.log(msg);
-                if (msg === 'html equal') {
+                //console.log(msg);
+                if (msg === 'updated') {
                     exercise.emit('pass', 'HTML updated');
                     callback(null, true);
                     ph.exit();
                 } else if (msg === 'finished') {
                     failExercise('Событие не поймано');
-                }
-            });
-
-
-            page.set('onCallback', function(data) {
-                if (data.msg === 'finished') { 
-                    failExercise('Page loaded. Timer done.');
-                } else if (data.msg ==='updated'){
-                    exercise.emit('pass', 'HTML updated');
-                    callback(null, true);
-                    ph.exit();
                 }
             });
 
@@ -50,16 +37,19 @@ exercise.addVerifyProcessor(function (callback) {
                 page.evaluate(function() {
                     window.modules.require(['jquery'], function($){
                         var contentHtml = $('.content').html();
+                        $('.sssr').removeClass('sssr_autoscroll');
                         $('.form__search .input__control').val('bemup');
-                        $('.form__search .button[type="submit]').click();
                         window.setTimeout(function() {
-                            var updatedHtml = $('.content').html();
-                            if (updatedHtml !== contentHtml) {
-                                window.callPhantom({ msg: 'updated' });
-                            } else {
-                                window.callPhantom({ msg: 'finished' });
-                            }
-                        }, 2000);
+                            $('.form__search :submit').click();
+                            window.setTimeout(function() {
+                                var updatedHtml = $('.content').html();
+                                if (updatedHtml !== contentHtml) {
+                                    console.log('updated');
+                                } else {
+                                    console.log('finished');
+                                }
+                            }, 3000);
+                        }, 300);
                     });
 
                 });
