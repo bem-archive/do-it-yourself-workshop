@@ -1,6 +1,7 @@
 var exercise = require('workshopper-exercise')(),
     phantom = require('phantom'),
-    url = 'http://localhost:3000/';
+    config = require('../../utils/config'),
+    url = config.server_url;
 
 exercise.requireSubmission = false;
 
@@ -17,7 +18,7 @@ exercise.addVerifyProcessor(function (callback) {
             };
 
             page.onConsoleMessage(function(msg) { 
-                console.log(msg);
+                //console.log(msg);
                 if (msg === 'ajax loaded') {
                     exercise.emit('pass', 'ajax loaded');
                     callback(null, true);
@@ -45,11 +46,10 @@ exercise.addVerifyProcessor(function (callback) {
                 page.evaluate(function() {
                     window.modules.require(['jquery'], function($){
                         $('.form__search .input__control').val('bemup');
-                        //$('.form__search .button').click();
                         $('.form').bem('form').emit('submit');
                         window.setTimeout(function() {
                             window.callPhantom({ msg: 'finished' });
-                        }, 2000);
+                        }, 3000);
                     });
 
                 });

@@ -17,7 +17,7 @@ exercise.addVerifyProcessor(function (callback) {
             };
 
             page.onConsoleMessage(function(msg) { 
-                console.log(msg);
+                //console.log(msg);
                 if (msg === 'BEM-event') {
                     exercise.emit('pass', 'событие стриггерирось.');
                     callback(null, true);
@@ -37,9 +37,6 @@ exercise.addVerifyProcessor(function (callback) {
                     window.modules.require(['jquery'], function($){
                         window.setTimeout(function() {
                             $('.form__search .button').click();
-                            $('.form').bem('form').on('submit', function() { 
-                                console.log('BEM-event'); 
-                            });
                         }, 1500);
                     });
 

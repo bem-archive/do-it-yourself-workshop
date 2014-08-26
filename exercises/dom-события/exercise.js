@@ -1,6 +1,7 @@
 var exercise = require('workshopper-exercise')(),
     phantom = require('phantom'),
-    url = 'http://localhost:8080/desktop.bundles/index/';
+    config = require('../../utils/config'),
+    url = config.server_url;
 
 exercise.requireSubmission = false;
 
@@ -12,13 +13,13 @@ exercise.addVerifyProcessor(function (callback) {
 
             var failExercise = function(msg) {
                 exercise.emit('fail', msg);
-                ph.exit();
                 callback(null, false);
+                ph.exit();
             };
 
             page.onConsoleMessage(function(msg) { 
                 //console.log(msg);
-                if (msg === 'query send') {
+                if (msg === 'prevented') {
                     exercise.emit('pass', 'событие стриггерирось.');
                     callback(null, true);
                     ph.exit();
@@ -37,10 +38,13 @@ exercise.addVerifyProcessor(function (callback) {
                     window.modules.require(['jquery'], function($){
                         window.setTimeout(function() {
                             $('.form__search .button').click();
+                            window.setTimeout(function(){
+                                console.log('finished');
+                            }, 200);
                         }, 3000);
                     });
 
-                }, console.log('finished'));
+                });
             });
         });
     });

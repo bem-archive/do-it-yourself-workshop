@@ -1,6 +1,6 @@
 var exercise = require('workshopper-exercise')(),
     phantom = require('phantom'),
-    config = require('../../utils/config');
+    config = require('../../utils/config'),
     url = config.server_url;
 
 exercise.requireSubmission = false;
