@@ -1,8 +1,7 @@
 В предыдущих шагах мы разработали прототип нашего приложения. В нем есть все основные блоки, осталось добавить только блоки `input`, `button`, `icon`. Давайте допишем их в наш `BEMJSON`:
 
-```js
-...
-{
+```javascript
+({
     block: 'header',
     content: [
         {
@@ -34,7 +33,7 @@
             ]
         }
     ]
-}
+})
 ```
 
 Запустим `bem make -m clean && bem server` и зайдем на страницу проекта в браузере [localhost:8080/desktop.bundles/index/](http://localhost:8080/desktop.bundles/index/)

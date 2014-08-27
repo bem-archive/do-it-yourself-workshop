@@ -1,6 +1,7 @@
 var exercise = require('workshopper-exercise')(),
     phantom = require('phantom'),
-    url = 'http://localhost:3000';
+    config = require('../../utils/config'),
+    url = config.server_url;
 
 exercise.requireSubmission = false;
 
@@ -18,13 +19,6 @@ exercise.addVerifyProcessor(function (callback) {
 
             page.onConsoleMessage(function(msg) { 
                 console.log(msg);
-                if (msg === 'spin progress') {
-                    exercise.emit('pass', 'событие стриггерирось.');
-                    callback(null, true);
-                    ph.exit();
-                } else if (msg === 'finished') {
-                    failExercise('Событие не поймано');
-                }
             });
 
 
@@ -47,8 +41,8 @@ exercise.addVerifyProcessor(function (callback) {
                 page.evaluate(function() {
                     window.modules.require(['jquery'], function($){
                         $('.form__search .input__control').val('bemup');
-                        $('.form__search .button').click();
                         window.setTimeout(function() {
+                            $('.form__search .button').click();
                             if ($('.spin').hasClass('spin_progress')) {
                                 window.callPhantom({ msg: 'spin progress' });
                             } else {

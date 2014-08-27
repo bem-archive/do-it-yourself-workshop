@@ -32,8 +32,9 @@ $ bem server
 Наша страница состоит из двух основных частей — шапки и содержимого. Добавим их в index.bemjson.js:
 
 ```js
+({
 block: 'page',
-    ...
+    //...
     content: [
         {
             block: 'header'
