@@ -37,7 +37,7 @@ exercise.addVerifyProcessor(function (callback) {
                 page.evaluate(function() {
                     window.modules.require(['jquery'], function($){
                         window.setTimeout(function() {
-                            $('.form__search .button').click();
+                            $('.form__search :submit').click();
                             window.setTimeout(function(){
                                 console.log('finished');
                             }, 200);

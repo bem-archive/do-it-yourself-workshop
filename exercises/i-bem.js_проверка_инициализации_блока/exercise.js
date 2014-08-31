@@ -12,6 +12,12 @@ exercise.addVerifyProcessor(function (callback) {
     phantom.create(function (ph) {
     ph.createPage(function (page) {
 
+        var failExercise = function(msg) {
+            exercise.emit('fail', msg);
+            ph.exit();
+            callback(null, false);
+        };
+
         //page.set('onConsoleMessage', function (arguments) {
             //console.log(arguments);
         //});
@@ -26,13 +32,16 @@ exercise.addVerifyProcessor(function (callback) {
                 ph.exit();
                 callback(null, true);
             } else {
-                exercise.emit('fail', 'блок `form` не инициализирован');
-                ph.exit();
+                failExercise('блок `form` не инициализирован');
             }
         });
 
         page.open(url, function (status) {
-            console.log('opened url(', url, '): ', status);
+
+            if (status === 'fail') {
+                failExercise('Сервер не запущен.');
+            }
+
             page.evaluate(function() {
                 modules.require(['jquery'], function($) {
                     window.setTimeout(function() {

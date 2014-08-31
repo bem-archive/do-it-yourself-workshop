@@ -13,31 +13,24 @@ exercise.addVerifyProcessor(function (callback) {
 
             var failExercise = function(msg) {
                 exercise.emit('fail', msg);
-                ph.exit();
                 callback(null, false);
+                ph.exit();
             };
 
             page.onConsoleMessage(function(msg) { 
-                //console.log(msg);
+                console.log(msg);
                 if (msg === 'ajax loaded') {
                     exercise.emit('pass', 'ajax loaded');
                     callback(null, true);
                     ph.exit();
                 } else if (msg === 'finished') {
-                    failExercise('finished request, failed');
-                } else if (msg === 'ajax failed') {
-                    failExercise('ajax not loaded');
-                }
-            });
-
-
-            page.set('onCallback', function(data) {
-                if (data.msg === 'finished') { 
-                    failExercise('Page loaded. Timer done. Nothing happens.');
+                    failExercise('finished request, ajax failed');
                 }
             });
 
             page.open(url, function (status) {
+
+                console.log('page loaded? ', status);
 
                 if (status === 'fail') {
                     failExercise('Сервер не запущен.');
@@ -45,10 +38,21 @@ exercise.addVerifyProcessor(function (callback) {
 
                 page.evaluate(function() {
                     window.modules.require(['jquery'], function($){
-                        $('.form__search .input__control').val('bemup');
-                        $('.form').bem('form').emit('submit');
+                        console.log('jquery loaded. $: ', $);
+
                         window.setTimeout(function() {
-                            window.callPhantom({ msg: 'finished' });
+                            $('.form__search .input__control').val('moscow');
+
+                            $('.form').bem('form').emit('submit');
+                        }, 400);
+
+
+                        $('.form').bem('form').on('submit', function() {
+                            console.log('form submitted');
+                        });
+
+                        window.setTimeout(function() {
+                            console.log('finished');
                         }, 3000);
                     });
 
