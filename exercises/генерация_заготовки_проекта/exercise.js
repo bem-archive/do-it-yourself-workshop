@@ -14,12 +14,12 @@ console.log('Проверяем правильность задания. Пож�
 
 exercise.addVerifyProcessor(function(callback) {
 
-    function failBadPath() {
-        exercise.emit('fail', 'Вы должны установить generator-bem-stub с необходимыми параметрами.')
+    var failExercise = function(msg) {
+        exercise.emit('fail', msg);
         callback(null, false);
-    }
+    };
 
-    function exePass(msg) {
+    function passExercise(msg) {
         exercise.emit('pass', msg);
         callback(null, true);
     }
@@ -30,15 +30,13 @@ exercise.addVerifyProcessor(function(callback) {
         var currentPath = path.join(__dirname + '../../..' + '/bfs-stub/' + pathItem);
         fs.stat(currentPath, function(err, stat) {
             if (err || !stat.isDirectory()) {
-                return(failBadPath());
+                return failExercise('Вы должны установить generator-bem-stub с необходимыми параметрами.');
             } else if (currentItem === checkPaths.length) {
                 currentItem = 0;
-                return(exePass('Все библиотеки на месте!'));
+                return passExercise('Все библиотеки на месте!');
             }
         });
     });
 });
-
-
 
 module.exports = exercise;

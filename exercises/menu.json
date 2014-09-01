@@ -7,7 +7,6 @@
     "Дописать BEMJSON блоков island и content",
     "Стили блоков header island content page",
     "BEMHTML блока form",
-    "BEMHTML блоков content и header, deps.js",
     "Добавить блоки из bem-components",
     "Ymodules декларация модуля form",
     "i-bem.js проверка инициализации блока",

@@ -1,27 +1,80 @@
 Займемся CSS. Добавим оформление для блока `header`. Для этого отредактируем нужные файлы:
 
-Воспользуемся для этого уже написанными стилями, которые вы можете взять из нашего репозитория:
+Воспользуемся для этого уже написанными стилями:
 
- * bfs-stub/desktop.blocks/header/header.css — https://github.com/bem/sssr/blob/master/desktop.blocks/header/header.css
- * bfs-stub/desktop.blocks/logo/logo.css — https://github.com/bem/sssr/blob/master/desktop.blocks/logo/logo.css
- * bfs-stub/desktop.blocks/form/form.roo — https://github.com/bem/sssr/blob/master/desktop.blocks/form/form.roo
- * bfs-stub/desktop.blocks/grid/grid.css — https://github.com/bem/sssr/blob/master/desktop.blocks/grid/grid.css
+`./desktop.blocks/header/header.css`:
 
-На этом проекте мы используем как чистый CSS, так и препроцессор roole http://roole.org. В ходе сборки CSS файлы обрабатываются препроцессором, затем склеиваются.
+```css
+.header {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    box-sizing: border-box;
+    width: 100%;
+    background: #f6f6f6;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 10px 20px -5px rgba(0,0,0,.4);
 
-После добавления стилей запустим `bem server` для сборки файлов нашего проекта и запуска сервера для разработки. Теперь можно посмотреть на результаты нашей работы по адресу, на котором поднялся наш `bem server`- http://localhost:8080/desktop.bundles/index/
+    padding: 10px 10%;
+}
 
-По окончанию процесса сборки запустим `node bfs-workshop.js verify` для тестирования результатов этого шага.
+.header .button {
+    margin-left: 10px;
+}
+```
 
 Настало время привести в порядок оформление блока `island`.
-Стили для этого блока и его элементов мы возьмем в нашем репозитории, в папке /desktop.blocks/island — https://github.com/bem/sssr/tree/master/desktop.blocks/island и перенесем их в наш проект.
 
-После добавления стилей обновим нашу страницу и по окончанию процесса сборки запустим `node bfs-workshop.js verify` для тестирования результатов этого шага.
+`./desktop.blocks/island/island.css`:
 
-Нам осталось оформить обрамление страницы — блоки `content` и `page`. Скопируем стили блоков нашего проекта:
+```css
+.island {
+    font-size: 18px;
+    line-height: 140%;
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 15px 5px 5px 15px;
+    border-radius: 3px;
+    background: #fff;
+    box-shadow: inset 0 0 1px rgba(0, 0, 0, .4);
+}
 
- * [блок `page`](https://github.com/bem/sssr/blob/master/desktop.blocks/page/page.css);
- * [блок `content`](https://github.com/bem/sssr/blob/master/desktop.blocks/content/content.css).
+.island__footer {
+    margin-top: 10px;
+}
+
+.island__image {
+    display: block;
+    width: 100%;
+    border-radius: 3px;
+}
+```
+
+
+Нам осталось оформить обрамление страницы — блоки `content` и `page`.
+
+`./desktop.blocks/content/content.css`:
+
+```css
+body .content {
+    column-count: 4;
+    column-gap: 15px;
+    padding: 10px 10%;
+}
+```
+`./desktop.blocks/page/page.css`:
+
+```css
+.page {
+    font-family: Tahoma;
+    min-height: 100%;
+    margin: 0;
+    padding-top: 100px;
+    background: #f6f5f3;
+}
+```
 
 После добавления стилей опять обновим нашу страницу для пересборки нашего проекта. Теперь можно посмотреть на результаты нашей работы еще раз.
 
