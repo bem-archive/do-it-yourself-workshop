@@ -81,4 +81,3 @@ modules.require(['jquery'], function($) {
 ```
 
 В консоли отобразится структура объекта ```form```.
-
