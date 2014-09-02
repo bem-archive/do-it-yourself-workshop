@@ -81,3 +81,5 @@ modules.require(['jquery'], function($) {
 ```
 
 В консоли отобразится структура объекта ```form```.
+
+Запустим `node bfs-workshop.js verify` для тестирования результатов этого шага.

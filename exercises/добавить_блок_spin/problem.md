@@ -46,16 +46,13 @@ modules.require(['jquery'], function($) {
 
 Мы выставили булевый модификатор `spin_progress` в значение `true` и должны увидеть вращающийся спинер рядом с полем ввода.
 
-Добавим стили для этого блока в файл `./desktop.blocks/sssr/sssr.roo`:
+Добавим стили для этого блока в файл `./desktop.blocks/sssr/sssr.css`:
 
 ```CSS
-.sssr
+.sssr .spin
 {
-    .spin
-    {
-        margin-left: 1em;
-        vertical-align: middle;
-    }
+    margin-left: 1em;
+    vertical-align: middle;
 }
 ```
 
@@ -89,25 +86,21 @@ modules.define('sssr', ['i-bem__dom', 'jquery'], function(provide, BEMDOM, $) {
 })
 ```
 
-Модификаторы можно использовать не только в JavaScript, но и в CSS. Давайте сделаем так, чтобы содержимое страницы затенялось, пока идет загрузка. Для этого отредактируем `./desktop.bundles/sssr/sssr.roo`:
+Модификаторы можно использовать не только в JavaScript, но и в CSS. Давайте сделаем так, чтобы содержимое страницы затенялось, пока идет загрузка. Для этого отредактируем `./desktop.bundles/sssr/sssr.css`:
 
 ```css
-.sssr
+.sssr .spin
 {
-    .spin
-    {
-        margin-left: 1em;
-        vertical-align: middle;
-    }
-
-    &_loading .content
-    {
-        opacity: 0.5;
-    }
+    margin-left: 1em;
+    vertical-align: middle;
+}
+.sssr .spin_loading .content
+{
+    opacity: 0.5;
 }
 ```
 
-Протестируем наше приложение: http://localhost:3000/. Во время отправки запроса и загрузки данных
+Протестируем наше приложение: http://localhost:8080/desktop.bundles/index/. Во время отправки запроса и загрузки данных
 должен показываться блок `spin`, а содержимое страницы — затеняться.
 
 После окончания редактирования запустите `node bfs-workshop.js verify` для проверки результата.

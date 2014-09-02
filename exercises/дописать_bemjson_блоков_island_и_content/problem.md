@@ -3,7 +3,6 @@
 ```js
 ({
     block: 'content',
-    mix: { block: 'grid' },
     content: [
         {
             block: 'island',
@@ -45,6 +44,6 @@
 })
 ```
 
-После этого запустим `bem make` для сборки файлов нашего проекта.
+Откроем нашу страницу: http://localhost:8080/desktop.bundles/index/
 
 По окончанию процесса сборки запустим `node bfs-workshop.js verify` для тестирования результатов этого шага.
