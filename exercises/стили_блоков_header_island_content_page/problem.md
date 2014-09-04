@@ -13,7 +13,6 @@
     width: 100%;
     background: #f6f6f6;
     box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 10px 20px -5px rgba(0,0,0,.4);
-
     padding: 10px 10%;
 }
 
@@ -52,7 +51,6 @@
 }
 ```
 
-
 Нам осталось оформить обрамление страницы — блоки `content` и `page`.
 
 `./desktop.blocks/content/content.css`:
@@ -72,7 +70,7 @@ body .content {
     min-height: 100%;
     margin: 0;
     padding-top: 100px;
-    background: #f6f5f3;
+    background: #000;
 }
 ```
 

@@ -8,7 +8,7 @@ exercise.requireSubmission = false;
 console.log('Проверяем правильность задания. Пожалуйста подождите.');
 
 exercise.addVerifyProcessor(function (callback) {
-    phantom.create(function (ph) {
+    phantom.create('--ignore-ssl-errors=yes', function (ph) {
         ph.createPage(function (page) {
 
             var failExercise = function(msg) {
@@ -18,7 +18,7 @@ exercise.addVerifyProcessor(function (callback) {
             };
 
             page.onConsoleMessage(function(msg) { 
-                console.log(msg);
+                //console.log(msg);
                 if (msg === 'ajax loaded') {
                     exercise.emit('pass', 'ajax loaded');
                     callback(null, true);
@@ -29,36 +29,24 @@ exercise.addVerifyProcessor(function (callback) {
             });
 
             page.open(url, function (status) {
-
-                console.log('page loaded? ', status);
-
                 if (status === 'fail') {
                     failExercise('Сервер не запущен.');
                 }
 
                 page.evaluate(function() {
                     window.modules.require(['jquery'], function($){
-                        console.log('jquery loaded. $: ', $);
+                        $('.form .input__control').val('moscow');
 
-                        window.setTimeout(function() {
-                            $('.form__search .input__control').val('moscow');
-
-                            $('.form').bem('form').emit('submit');
-                        }, 400);
-
-
-                        $('.form').bem('form').on('submit', function() {
-                            console.log('form submitted');
-                        });
+                        $('.form :submit').click();
 
                         window.setTimeout(function() {
                             console.log('finished');
-                        }, 3000);
+                        }, 6000);
                     });
 
                 });
             });
-        });
-    });
+        })
+    }, { });
 });
 module.exports = exercise;

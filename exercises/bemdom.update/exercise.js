@@ -8,7 +8,7 @@ exercise.requireSubmission = false;
 console.log('Проверяем правильность задания. Пожалуйста подождите.');
 
 exercise.addVerifyProcessor(function (callback) {
-    phantom.create(function (ph) {
+    phantom.create('--ignore-ssl-errors=yes', function (ph) {
         ph.createPage(function (page) {
 
             var failExercise = function(msg) {
@@ -48,7 +48,7 @@ exercise.addVerifyProcessor(function (callback) {
                                 } else {
                                     console.log('finished');
                                 }
-                            }, 3000);
+                            }, 2000);
                         }, 300);
                     });
 

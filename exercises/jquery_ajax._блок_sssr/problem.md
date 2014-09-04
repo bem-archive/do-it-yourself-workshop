@@ -24,7 +24,7 @@ modules.define('sssr', ['i-bem__dom', 'jquery'], function(provide, BEMDOM, $) {
                 type: 'GET',
                 dataType: 'html',
                 cache: false,
-                url: 'http://localhost:3000/search',
+                url: 'https://sssr.bem.yandex.net/search/',
                 data: formVal,
                 success: this._onSuccess,
                 context: this
@@ -41,14 +41,7 @@ modules.define('sssr', ['i-bem__dom', 'jquery'], function(provide, BEMDOM, $) {
 
 В конструкторе блока мы подписываемся на событие `submit` блока `form`. При возникновении этого события выполняется приватный метод `_sendRequest`, отправляющий AJAX-запрос. Когда ответ от сервера будет получен, выполнится обработчик `_onSuccess`, который обновит содержимое блока `content` полученными результатами.
 
-Осталось подмешать блок `sssr` к блоку `page` в файле `index.bemjson.js`:
-
-```js
-block: 'page',
-//...
-mix: { block: 'sssr' }
-
-```
+В файле `index.bemjson.js` осталось к блоку `page` подмешать блок `sssr` и указать, что он имеет `js` реализацию.
 
 Итак, мы получили первую, пока очень примитивную и недоработанную версию нашего приложения.
 Теперь мы можем протестировать его работу. Чтобы запустить наше приложение, пересоберем бандл и выполним код скомпилированного `./desktop.bundles/index/index.node.js`. Перейдем на страницу http://localhost:8080/desktop.bundles/index/, введем что-нибудь в поле ввода и попробуем отправить форму. Если все сделано верно, то под шапкой мы увидим результаты поиска по заданному запросу.
