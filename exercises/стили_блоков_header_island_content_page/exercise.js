@@ -7,7 +7,6 @@ var path = require('path'),
         '.page',
         '.content',
         '.header',
-        '.form__search',
         '.island',
         '.island__footer'
     ];

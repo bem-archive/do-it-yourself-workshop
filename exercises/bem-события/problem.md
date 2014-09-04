@@ -95,16 +95,15 @@ modules.define('form', ['i-bem__dom'], function(provide, BEMDOM) {
                     this.bindTo('submit', function(e) {
                         this._onSubmit(e);
                     });
-                    this.on('submit', function() {
-                        console.log('BEM-event');
-                    });
+                    // подписаться на БЭМ-событие `submit`
+                    // и вывести в консоль сообщение 'BEM-event'
                 }
             }
         },
 
         _onSubmit: function(e) {
-            e.preventDefault();
-            this.emit('submit');
+            // отменить дефолтное поведение формы
+            // сгенерировать БЭМ-событие `submit`
         },
         getVal: function() {
             return this.domElem.serialize();
