@@ -25,7 +25,7 @@ modules.define('sssr', ['i-bem__dom', 'jquery'], function(provide, BEMDOM, $) {
                 dataType: 'html',
                 cache: false,
                 url: 'https://sssr.bem.yandex.net/search/',
-                data: formVal,
+                data: formVal + '&twitter=on',
                 success: this._onSuccess,
                 context: this
             });
