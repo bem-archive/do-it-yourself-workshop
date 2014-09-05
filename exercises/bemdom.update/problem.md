@@ -25,7 +25,7 @@ modules.define('sssr', ['i-bem__dom', 'jquery'], function(provide, BEMDOM, $) {
                 type: 'GET',
                 dataType: 'html',
                 cache: false,
-                url: 'http://localhost:3000/search',
+                url: 'https://sssr.bem.yandex.net/search/',
                 data: formVal,
                 success: this._onSuccess,
                 context: this
