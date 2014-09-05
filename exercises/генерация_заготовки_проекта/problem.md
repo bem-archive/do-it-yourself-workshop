@@ -19,9 +19,8 @@ $ yo bem-stub
 [?] What base library to use? bem-core
 [?] Would you like any additional libraries? bem-components
 [?] What platforms to use? desktop
-[?] Use design + autoprefixer from library `bem-components`? Yes
-[?] What technologies to use? bemjson.js, browser.js+bemhtml, node.js
-[?] What template system to use? bemhtml
+[?] Use design from bem-components? Yes
+[?] What technologies to use? bemjson.js, browser.js+bemhtml, bemhtml
 [?] Build static HTML? Yes
 ```
 

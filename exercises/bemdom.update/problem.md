@@ -38,3 +38,5 @@ modules.define('sssr', ['i-bem__dom', 'jquery'], function(provide, BEMDOM, $) {
     }))
 })
 ```
+
+Теперь наше приложение умеет показывать загруженный `html`. Откроем страницу в браузере и проверим работу сайта.После чего запустим `node bfs-workshop.js`.
