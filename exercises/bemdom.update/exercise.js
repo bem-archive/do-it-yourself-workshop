@@ -17,7 +17,7 @@ exercise.addVerifyProcessor(function (callback) {
                 ph.exit();
             };
 
-            page.onConsoleMessage(function(msg) { 
+            page.onConsoleMessage(function(msg) {
                 //console.log(msg);
                 if (msg === 'updated') {
                     exercise.emit('pass', 'HTML updated');
@@ -48,7 +48,7 @@ exercise.addVerifyProcessor(function (callback) {
                                 } else {
                                     console.log('finished');
                                 }
-                            }, 2000);
+                            }, 4000);
                         }, 300);
                     });
 
