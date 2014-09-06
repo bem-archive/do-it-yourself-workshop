@@ -2,7 +2,7 @@
 
 Установим модуль генератора к `Yeoman` из репозитория npm:
 
-```
+```bash
 $ sudo npm install -g generator-bem-stub
 ```
 
