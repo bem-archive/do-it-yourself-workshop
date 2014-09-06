@@ -10,7 +10,7 @@ var checkPaths = [
 
 exercise.requireSubmission = false;
 
-console.log('Проверяем правильность задания. Пожалуйста подождите.');
+console.log('Проверяем правильность задания. Пожалуйста, подождите.');
 
 exercise.addVerifyProcessor(function(callback) {
 
