@@ -19,7 +19,7 @@ exercise.addVerifyProcessor(function (callback) {
             page.onConsoleMessage(function(msg) { 
                 //console.log(msg);
                 if (msg === 'BEM-event') {
-                    exercise.emit('pass', 'событие стриггерирось.');
+                    exercise.emit('pass', 'BEM-событие стриггерирось');
                     callback(null, true);
                     ph.exit();
                 } else if (msg === 'finished') {

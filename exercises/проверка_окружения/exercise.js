@@ -21,7 +21,7 @@ exercise.addVerifyProcessor(function (callback) {
 
             toolVersions.push(stdOut);
             if (toolVersions.length === tools.length) {
-                exercise.emit('pass', 'All needed tools installed');
+                exercise.emit('pass', 'Необходимые инструменты найдены');
                 callback(null, true);
             }
         });

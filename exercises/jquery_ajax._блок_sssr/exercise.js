@@ -20,7 +20,7 @@ exercise.addVerifyProcessor(function (callback) {
             page.onConsoleMessage(function(msg) { 
                 //console.log(msg);
                 if (msg === 'ajax loaded') {
-                    exercise.emit('pass', 'ajax loaded');
+                    exercise.emit('pass', 'AJAX работает');
                     callback(null, true);
                     ph.exit();
                 } else if (msg === 'finished') {

@@ -16,7 +16,7 @@ exercise.addVerifyProcessor(function (callback) {
         modules.require('form', function(form) {
             moduleResult = form.get();
             if (moduleResult.length > 0) {
-                exercise.emit('pass', 'Модуль `form` загружен.');
+                exercise.emit('pass', 'Модуль `form` загружен');
                 callback(null, true);
             } else {
                 exercise.emit('fail', 'Необходимо задекларировать модуль `form` в `js` реализации блока `form`');

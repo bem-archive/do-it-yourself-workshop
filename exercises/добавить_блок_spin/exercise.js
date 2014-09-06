@@ -24,7 +24,7 @@ exercise.addVerifyProcessor(function (callback) {
 
             page.set('onCallback', function(data) {
                 if (data.msg === 'spin progress') {
-                    exercise.emit('pass', 'событие стриггерирось.');
+                    exercise.emit('pass', 'блок spin на месте');
                     callback(null, true);
                     ph.exit();
                 } else if (data.msg === 'finished') {
