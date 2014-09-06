@@ -23,7 +23,7 @@ workshopper({
     appDir      : __dirname,
     helpFile    : fpath('help.txt'),
     menuItems   : [ {
-        name    : 'авторы',
+        name    : 'Авторы',
         handler : credits
     } ]
 })
