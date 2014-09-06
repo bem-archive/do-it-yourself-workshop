@@ -94,7 +94,7 @@ modules.define('sssr', ['i-bem__dom', 'jquery'], function(provide, BEMDOM, $) {
     margin-left: 1em;
     vertical-align: middle;
 }
-.sssr .spin_loading .content
+.sssr_loading .content
 {
     opacity: 0.5;
 }
@@ -104,3 +104,4 @@ modules.define('sssr', ['i-bem__dom', 'jquery'], function(provide, BEMDOM, $) {
 должен показываться блок `spin`, а содержимое страницы — затеняться.
 
 После окончания редактирования запустите `node bfs-workshop.js verify` для проверки результата.
+
