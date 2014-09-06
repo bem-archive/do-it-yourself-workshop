@@ -40,7 +40,7 @@ BEMDOM.decl('my-block', {
 **Пример**: При инициализации экземпляра блока `my-form` выполняется подписка на событие `click` элемента `submit`, при наступлении которого будет вызван метод экземпляра блока `_onSubmit`.
 
 ```js
-BEMDOM.decl('my-block', {
+BEMDOM.decl('my-form', {
     onSetMod : {
         'js' : {
             'inited': function() {
