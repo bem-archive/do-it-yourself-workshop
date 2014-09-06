@@ -56,7 +56,7 @@
 `./desktop.blocks/content/content.css`:
 
 ```css
-body .content {
+.content {
     column-count: 4;
     column-gap: 15px;
     padding: 10px 10%;
