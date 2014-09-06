@@ -66,7 +66,7 @@ body .content {
 
 ```css
 .page {
-    font-family: Tahoma;
+    font-family: Tahoma, sans-serif;
     min-height: 100%;
     margin: 0;
     padding-top: 100px;
@@ -77,3 +77,4 @@ body .content {
 После добавления стилей опять обновим нашу страницу для пересборки нашего проекта. Теперь можно посмотреть на результаты нашей работы еще раз.
 
 По окончанию процесса сборки запустим `node bfs-workshop.js verify` для тестирования результатов этого шага.
+
