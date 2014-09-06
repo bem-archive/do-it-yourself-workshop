@@ -11,10 +11,8 @@ modules.define('sssr', ['i-bem__dom', 'jquery'], function(provide, BEMDOM, $) {
         onSetMod: {
             js: {
                 inited: function() {
-                    this._form = this.findBlockInside('form');
-                    this._form.on('submit', function() {
-                        this._sendRequest();
-                    }, this);
+                    this._form = this.findBlockInside('form')
+                        .on('submit', this._sendRequest, this);
                 }
             }
         },
