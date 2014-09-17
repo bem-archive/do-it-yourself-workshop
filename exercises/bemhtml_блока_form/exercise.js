@@ -17,7 +17,7 @@ exercise.addVerifyProcessor(function (callback) {
             exercise.emit('pass', 'BEMHTML блока form на месте');
             callback(null, true);
         } else {
-            exercise.emit('fail', 'Нужно добавить BEMHTML шаблон блока form');
+            exercise.emit('fail', 'Нужно добавить BEMHTML шаблон блока `form` и пересобрать проект.');
         }
     } else {
         exercise.emit('fail', 'index.bemhtml.js не существует. Необходимо запустить bem make для сборки проекта.');
