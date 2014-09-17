@@ -8,6 +8,7 @@ var path = require('path'),
         '.content',
         '.header',
         '.island',
+        '.island__image',
         '.island__footer'
     ];
 
@@ -24,12 +25,12 @@ exercise.addVerifyProcessor(function (callback) {
                 var msg = 'Вам нужно добавить CSS: ' + cssString.slice(1);
                 exercise.emit('fail', msg);
                 callback(null, false);
-            } 
+            }
         });
         exercise.emit('pass', 'CSS стили блоков на месте');
         callback(null, true);
     } else {
-        exercise.emit('fail', 'index.css не существует. Необходимо запустить bem make для сборки проекта.');
+        exercise.emit('fail', 'index.css не найден. Необходимо запустить bem make для сборки проекта.');
         callback(null, false);
     }
 });

@@ -17,7 +17,7 @@ exercise.addVerifyProcessor(function (callback) {
                 ph.exit();
             };
 
-            page.onConsoleMessage(function(msg) { 
+            page.onConsoleMessage(function(msg) {
                 //console.log(msg);
                 if (msg === 'prevented') {
                     exercise.emit('pass', 'DOM-событие стриггерирось');
@@ -37,7 +37,7 @@ exercise.addVerifyProcessor(function (callback) {
                 page.evaluate(function() {
                     window.modules.require(['jquery'], function($){
                         window.setTimeout(function() {
-                            $('.form__search :submit').click();
+                            $('.form :submit').click();
                             window.setTimeout(function(){
                                 console.log('finished');
                             }, 200);

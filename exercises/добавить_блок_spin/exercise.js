@@ -17,18 +17,18 @@ exercise.addVerifyProcessor(function (callback) {
                 callback(null, false);
             };
 
-            page.onConsoleMessage(function(msg) { 
+            page.onConsoleMessage(function(msg) {
                 console.log(msg);
             });
 
 
             page.set('onCallback', function(data) {
                 if (data.msg === 'spin progress') {
-                    exercise.emit('pass', 'блок spin на месте');
+                    exercise.emit('pass', 'Блок spin на месте.');
                     callback(null, true);
                     ph.exit();
                 } else if (data.msg === 'finished') {
-                    failExercise('Событие не поймано');
+                    failExercise('У блока `spin` не был выставлен модификатор `progress`.');
                 }
             });
 
@@ -42,7 +42,7 @@ exercise.addVerifyProcessor(function (callback) {
                     window.modules.require(['jquery'], function($){
                         $('.form__search .input__control').val('bemup');
                         window.setTimeout(function() {
-                            $('.form__search .button').click();
+                            $('.form .button').click();
                             if ($('.spin').hasClass('spin_progress')) {
                                 window.callPhantom({ msg: 'spin progress' });
                             } else {
