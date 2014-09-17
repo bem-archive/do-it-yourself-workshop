@@ -13,20 +13,19 @@ modules.define('sssr', ['i-bem__dom', 'jquery'], function(provide, BEMDOM, $) {
         onSetMod: {
             js: {
                 inited: function() {
-                    this.findBlockInside('form').on('submit', function() {
-                        this._sendRequest();
-                    }, this);
+                    this.form = this.findBlockInside('form')
+                        .on('submit', this._sendRequest, this);
                 }
             }
         },
         _sendRequest: function() {
-            var formVal = this.findBlockInside('form').getVal();
+            var formVal = this._form.getVal();
             this._xhr = $.ajax({
                 type: 'GET',
                 dataType: 'html',
                 cache: false,
                 url: 'https://sssr.bem.yandex.net/search/',
-                data: formVal,
+                data: formVal + '&twitter=on',
                 success: this._onSuccess,
                 context: this
             });

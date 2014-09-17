@@ -65,10 +65,8 @@ modules.define('sssr', ['i-bem__dom', 'jquery'], function(provide, BEMDOM, $) {
         onSetMod: {
             js: {
                 inited: function() {
-                    this.findBlockInside('form').on('submit', function() {
-                        this.setMod('loading');
-                        this._sendRequest();
-                    }, this);
+                    this._form = this.findBlockInside('form')
+                        .on('submit', this._sendRequest, this);
                 }
             },
             loading: function(modName, modVal) {
@@ -76,7 +74,10 @@ modules.define('sssr', ['i-bem__dom', 'jquery'], function(provide, BEMDOM, $) {
             }
         },
 
-        // ...
+        _sendRequest: function() {
+            this.setMod('loading');
+            // ...
+        },
 
         _onSuccess: function(result) {
             this.delMod('loading');

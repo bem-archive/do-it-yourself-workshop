@@ -88,20 +88,16 @@ DOM.decl('my-form', {
 
 ```js
 modules.define('form', ['i-bem__dom'], function(provide, BEMDOM) {
-
     provide(BEMDOM.decl(this.name, {
         onSetMod: {
             js: {
                 inited: function() {
-                    this.bindTo('submit', function(e) {
-                        this._onSubmit(e);
-                    });
+                    this.bindTo('submit', this._onSubmit);
                     // подписаться на БЭМ-событие `submit`
                     // и вывести в консоль сообщение 'BEM-event'
                 }
             }
         },
-
         _onSubmit: function(e) {
             // отменить дефолтное поведение формы
             // сгенерировать БЭМ-событие `submit`
