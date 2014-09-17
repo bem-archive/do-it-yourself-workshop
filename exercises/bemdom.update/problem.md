@@ -1,42 +1,29 @@
-## BEMDOM.update()
+-------------------------------------------------------------------------------
+**Задание**: В методе `_onSuccess` вместо вывода сообщения нужно обновлять содержимое блока `content` данными, которые приходят от нашей "ручки".
 
-Метод позволяет заменить содержимое выбранного DOM-элемента.
+-------------------------------------------------------------------------------
 
-Допишем наш блок SSSR, чтобы он умел обновлять данные на странице.
+## Динамическое обновление блоков и элементов в DOM-дереве
 
-`./desktop.blocks/sssr/sssr.js`:
+В современных интерфейсах зачастую необходимо создавать новые фрагменты DOM-дерева и заменять старые в процессе работы (AJAX). В `i-bem.js` предусмотрены следующие функции для добавления и замены фрагментов DOM-дерева.
+
+Добавить DOM-фрагмент:
+* append — в конец указанного контекста;
+* prepend — в начало указанного контекста;
+* before — перед указанным контекстом;
+* after — после указанного контекста.
+
+Заместить DOM-фрагмент:
+* update — внутри указанного контекста;
+* replace — заменить указанный контекст новым DOM-фрагментом.
+
+`BEMDOM.update(ctx, content);`
+
+Пример использования:
 
 ```js
-modules.define('sssr', ['i-bem__dom', 'jquery'], function(provide, BEMDOM, $) {
-
-    provide(BEMDOM.decl(this.name, {
-        onSetMod: {
-            js: {
-                inited: function() {
-                    this.findBlockInside('form').on('submit', function() {
-                        this._sendRequest();
-                    }, this);
-                }
-            }
-        },
-        _sendRequest: function() {
-            var formVal = this.findBlockInside('form').getVal();
-            this._xhr = $.ajax({
-                type: 'GET',
-                dataType: 'html',
-                cache: false,
-                url: 'https://sssr.bem.yandex.net/search/',
-                data: formVal,
-                success: this._onSuccess,
-                context: this
-            });
-        },
-        _onSuccess: function(result) {
-            console.log('ajax loaded');
-            BEMDOM.update(this.findBlockInside('content').domElem, result);
-        }
-    }))
-})
+BEMDOM.update(this.findBlockOutside('example').domElem, 'new conent');
 ```
+Первым параметром передается контекст в виде DOM-элемента. Вторым параметром передаются данные, на которые нужно все заменить.
 
-Теперь наше приложение умеет показывать загруженный `html`. Откроем страницу в браузере и проверим работу сайта.После чего запустим `node bfs-workshop.js`.
+Откроем страницу в браузере и проверим работу сайта. После этого запустим `node bfs-workshop.js`.

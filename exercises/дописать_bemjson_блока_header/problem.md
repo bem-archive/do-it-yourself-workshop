@@ -1,34 +1,35 @@
+-------------------------------------------------------------------------------
+**Задание**: Примиксовать к блоку `logo` элемент `logo` блока `header`, а к блоку `form` - элемент `form` блока `header`. Для блока `form` задать тэг `<form>` и указать, что блок имеет js-реализацию.
+
+-------------------------------------------------------------------------------
+
 Используя знания о том, как добавлять сущности на страницу, давайте допишем BEMJSON блока `header`. Перед этим введем несколько новых ключевых слов:
 
 `mix` — позволяет разместить несколько БЭМ-сущностей на одной DOM-ноде;
-`tag` — позволяет явно задать какой html-тэг использовать для текущей БЭМ-сущности;
+`tag` — позволяет явно задать какой HTML-тэг использовать для текущей БЭМ-сущности;
 `js`  — указывает на то, имеет ли блок js-реализацию.
 
+Пример использования:
 ```js
-({
-block: 'header',
-    content: [
-        {
-            block: 'logo',
-            mix: { block: 'header', elem: 'logo' },
-            content: 'Social Services Search Robot:'
-        },
-        {
-            block: 'form',
-            tag: 'form',
-            js: true,
-            mix: { block: 'header', elem: 'form' },
-            content: [
-                {
-                    elem: 'search',
-                    content: 'Search form controls will be here'
-                }
-            ]
-        }
-    ]
-})
+{
+    block: 'example',
+    mix: { block: 'test' },
+    tag: 'span',
+    js: true
+}
 ```
 
-Откроем нашу страницу: http://localhost:8080/desktop.bundles/index/
+Перезагрузим нашу страницу: http://localhost:8080/desktop.bundles/index/
+
+На выходе у вас должно получиться DOM-дерево такого вида:
+
+```html
+<div class="header">
+    <div class="logo header__logo">Social Services Search Robot</div>
+    <form class="form header__form i-bem" data-bem="{"form":{}}">
+        <div class="form__search">form search</div>
+    </form>
+</div>
+```
 
 По окончанию процесса сборки запустим `node bfs-workshop.js verify` для тестирования результатов этого шага.
