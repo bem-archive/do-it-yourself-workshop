@@ -15,8 +15,7 @@
 
 {
     block : 'button',
-    mods: { theme: 'normal', size: 'm' },
-    type: 'submit',
+    mods: { theme: 'normal', size: 'm', type: 'submit' },
     text: 'Найти'
 }
 ```
