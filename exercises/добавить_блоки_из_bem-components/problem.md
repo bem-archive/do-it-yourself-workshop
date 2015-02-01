@@ -8,14 +8,14 @@
 ```javascript
 {
     block: 'input',
-    mods: { theme: 'normal', size: 'm', 'has-clear' : true },
+    mods : { theme : 'islands', size : 'm', 'has-clear' : true },
     name: 'query',
     placeholder: 'try me, baby!'
 }
 
 {
     block : 'button',
-    mods: { theme: 'normal', size: 'm', type: 'submit' },
+    mods: { theme: 'islands', size: 'm', type: 'submit' },
     text: 'Найти'
 }
 ```

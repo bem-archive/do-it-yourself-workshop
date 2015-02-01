@@ -2,8 +2,8 @@ var exercise = require('workshopper-exercise')();
 
 var path = require('path'),
     fs = require('fs'),
-    stringInputCss = '.input_theme_normal',
-    stringButtonCss = '.button_theme_normal',
+    stringInputCss = '.input_theme_islands',
+    stringButtonCss = '.button_theme_islands',
     cssPath = path.resolve(__dirname + '../../..' + '/bfs-stub/desktop.bundles/index/index.css');
 
 exercise.requireSubmission = false;
