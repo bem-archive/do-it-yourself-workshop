@@ -23,12 +23,12 @@ exercise.addVerifyProcessor(function (callback) {
 
 
             page.set('onCallback', function(data) {
-                if (data.msg === 'spin progress') {
+                if (data.msg === 'spin visible') {
                     exercise.emit('pass', 'Блок spin на месте.');
                     callback(null, true);
                     ph.exit();
                 } else if (data.msg === 'finished') {
-                    failExercise('У блока `spin` не был выставлен модификатор `progress`.');
+                    failExercise('У блока `spin` не был выставлен модификатор `visible`.');
                 }
             });
 
@@ -43,8 +43,8 @@ exercise.addVerifyProcessor(function (callback) {
                         $('.form__search .input__control').val('bemup');
                         window.setTimeout(function() {
                             $('.form .button').click();
-                            if ($('.spin').hasClass('spin_progress')) {
-                                window.callPhantom({ msg: 'spin progress' });
+                            if ($('.spin').hasClass('spin_visible')) {
+                                window.callPhantom({ msg: 'spin visible' });
                             } else {
                                 window.callPhantom({ msg: 'finished' });
                             }
