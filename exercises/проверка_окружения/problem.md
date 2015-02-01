@@ -3,7 +3,7 @@
 Установим модуль генератора к `Yeoman` из репозитория npm:
 
 ```bash
-$ sudo npm install -g generator-bem-stub
+$ sudo npm install -g generator-bem-stub@0.4.0
 ```
 
 После этого запустите `node bfs-workshop.js verify` для проверки правильности установки инструментов.
